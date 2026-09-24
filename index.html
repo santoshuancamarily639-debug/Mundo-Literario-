@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mundo Literario | Un libro, mil historias, infinitos mundos</title>
+  <meta name="description" content="Blog sobre la literatura: características, géneros, autores, obras importantes y literatura boliviana.">
+  <meta property="og:title" content="Mundo Literario">
+  <meta property="og:description" content="Un libro, mil historias, infinitos mundos.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root { --papel:#eef2ef; --tinta:#14213d; --mostaza:#e0a526; --ciruela:#5b2a4e; --verde:#2f6f62; --blanco:#fff;
+      --rojo:#d52b1e; --amarillo:#f9d900; --verdebo:#007934;
+      --titulo:"Bricolage Grotesque","Segoe UI",sans-serif; --texto:"Source Serif 4",Georgia,serif; --ancho:1100px; }
+    *,*::before,*::after { box-sizing:border-box; }
+    html { scroll-behavior:smooth; scroll-padding-top:1rem; }
+    body { margin:0; background:var(--papel); color:var(--tinta); font:1.125rem/1.65 var(--texto); }
+    h1,h2,h3 { font-family:var(--titulo); line-height:1.15; margin:0 0 .5em; }
+    h1 { font-size:clamp(2.4rem,6vw,4.2rem); font-weight:800; letter-spacing:-.02em; }
+    h2 { font-size:clamp(1.7rem,3.5vw,2.3rem); font-weight:700; }
+    h3 { font-size:1.2rem; font-weight:700; }
+    p { margin:0 0 1em; max-width:64ch; }
+    a { color:inherit; }
+    ul,ol,dl { margin:0; padding:0; }
+    :focus-visible { outline:3px solid var(--mostaza); outline-offset:3px; }
+    .saltar { position:absolute; left:-999px; top:0; background:var(--tinta); color:var(--papel); padding:.6rem 1rem; z-index:10; }
+    .saltar:focus { left:0; }
+
+    .cabecera { display:flex; flex-wrap:wrap; gap:.75rem 2rem; align-items:center; justify-content:space-between; max-width:var(--ancho); margin:0 auto; padding:1.25rem 1.5rem; }
+    .marca { font:800 1.35rem var(--titulo); text-decoration:none; }
+    .cabecera ul { display:flex; flex-wrap:wrap; gap:.25rem 1.4rem; list-style:none; }
+    .cabecera nav a { text-decoration:none; font:500 1rem var(--titulo); }
+    .cabecera nav a:hover { text-decoration:underline; text-underline-offset:6px; }
+
+    .boton { display:inline-block; border:2px solid var(--tinta); background:var(--tinta); color:var(--papel); font:700 1rem var(--titulo); padding:.75rem 1.4rem; border-radius:6px; text-decoration:none; }
+    .boton:hover { background:var(--ciruela); border-color:var(--ciruela); }
+    .boton-suave { background:transparent; color:var(--tinta); }
+    .boton-suave:hover { background:var(--tinta); border-color:var(--tinta); color:var(--papel); }
+    .acciones { display:flex; flex-wrap:wrap; gap:.75rem; margin-top:1.5rem; }
+
+    .hero { display:grid; grid-template-columns:1.1fr .9fr; gap:2rem; align-items:end; max-width:var(--ancho); margin:0 auto; padding:2.5rem 1.5rem 0; }
+    .hero-texto { padding-bottom:3rem; }
+    .lema { font-style:italic; font-size:1.3rem; color:var(--ciruela); }
+    .lomos { display:flex; align-items:flex-end; gap:6px; height:380px; border-bottom:10px solid var(--tinta); }
+    .lomos span { flex:1; height:var(--h); background:var(--c); color:var(--t); writing-mode:vertical-rl; transform:rotate(180deg); padding:1rem .2rem; font:700 1rem var(--titulo); white-space:nowrap; overflow:hidden; border-radius:3px 3px 0 0; animation:subir .7s ease-out both; }
+    .lomos span:nth-child(2){animation-delay:.08s} .lomos span:nth-child(3){animation-delay:.16s}
+    .lomos span:nth-child(4){animation-delay:.24s} .lomos span:nth-child(5){animation-delay:.32s} .lomos span:nth-child(6){animation-delay:.4s}
+    @keyframes subir { from { transform:rotate(180deg) translateY(-40px); opacity:0; } }
+
+    .bienvenida { max-width:var(--ancho); margin:0 auto; padding:3.5rem 1.5rem 1rem; columns:2 320px; column-gap:3rem; }
+    .bienvenida p { max-width:none; }
+
+    .seccion { max-width:var(--ancho); margin:0 auto; padding:4rem 1.5rem; }
+    .oscura { max-width:none; background:var(--tinta); color:var(--papel); }
+    .oscura > * { max-width:var(--ancho); margin-left:auto; margin-right:auto; }
+    .sub { margin-top:3rem; }
+    .rejilla { display:grid; gap:1.75rem; margin-top:1.5rem; }
+    .dos { grid-template-columns:repeat(2,1fr); }
+    .tres { grid-template-columns:repeat(3,1fr); }
+    .cuatro { grid-template-columns:repeat(4,1fr); }
+    .dos-col { display:grid; grid-template-columns:repeat(2,1fr); gap:0 3rem; }
+
+    .ficha { border-top:4px solid var(--tinta); padding-top:.9rem; }
+    .ficha p { font-size:1rem; }
+    .ficha p:last-child { margin-bottom:0; }
+    .oscura .ficha { border-color:var(--mostaza); }
+    .dato { font-style:italic; color:var(--verde); margin-bottom:.4em; }
+    .oscura .dato { color:var(--mostaza); }
+    .lista { list-style:none; font-size:1rem; }
+    .lista li { padding:.15rem 0 .15rem 1.1rem; position:relative; }
+    .lista li::before { content:""; position:absolute; left:0; top:.8em; width:.5rem; height:.5rem; border-radius:50%; background:var(--mostaza); }
+    .checks { list-style:none; margin-top:1rem; }
+    .checks li { padding:.5rem 0 .5rem 2rem; border-bottom:1px solid rgba(20,33,61,.15); position:relative; }
+    .checks li::before { content:"✓"; position:absolute; left:.2rem; color:var(--verde); font-weight:700; }
+    .obra { background:var(--blanco); padding:1.1rem 1.25rem; border-radius:8px; border-left:6px solid var(--ciruela); }
+    .obra p { font-size:1rem; margin-bottom:.4em; }
+    .obra .dato { margin-bottom:.6em; }
+
+    .bolivia { max-width:none; background:var(--blanco); border-top:12px solid transparent; border-image:linear-gradient(90deg,var(--rojo) 33.3%,var(--amarillo) 33.3% 66.6%,var(--verdebo) 66.6%) 1; }
+    .bolivia > * { max-width:var(--ancho); margin-left:auto; margin-right:auto; }
+    .chips { display:flex; flex-wrap:wrap; gap:.6rem; list-style:none; margin:1.25rem auto; }
+    .chips li { padding:.5rem 1.1rem; border:2px solid var(--tinta); border-radius:999px; font:500 1rem var(--titulo); }
+
+    .pasos { list-style:none; counter-reset:p; display:grid; grid-template-columns:repeat(2,1fr); gap:.9rem 2rem; margin-top:1.5rem; }
+    .pasos li { counter-increment:p; position:relative; background:var(--blanco); padding:.9rem 1rem .9rem 3.6rem; border-radius:8px; font:500 1rem var(--titulo); }
+    .pasos li::before { content:counter(p); position:absolute; left:1rem; top:50%; transform:translateY(-50%); width:1.9rem; height:1.9rem; border-radius:50%; background:var(--mostaza); display:grid; place-items:center; font-weight:800; }
+
+    .final { text-align:center; }
+    .final p { margin-left:auto; margin-right:auto; }
+    .cita { font:700 clamp(1.4rem,3vw,2rem)/1.3 var(--titulo); color:var(--mostaza); margin:1.5rem auto; }
+    .pie { display:flex; flex-wrap:wrap; gap:1rem; justify-content:space-between; max-width:var(--ancho); margin:0 auto; padding:2rem 1.5rem; border-top:2px solid var(--tinta); font-size:1rem; }
+    .pie p { margin:0; }
+
+    @media (max-width:900px) {
+      .hero,.dos-col,.pasos { grid-template-columns:1fr; }
+      .lomos { height:260px; }
+      .cuatro,.dos { grid-template-columns:repeat(2,1fr); }
+      .tres { grid-template-columns:repeat(2,1fr); }
+    }
+    @media (max-width:560px) {
+      body { font-size:1.05rem; }
+      .cuatro,.dos,.tres { grid-template-columns:1fr; }
+      .seccion { padding:3rem 1.25rem; }
+    }
+    @media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } .lomos span { animation:none; } }
+    
+  </style>
+</head>
+<body>
+  <a class="saltar" href="#contenido">Saltar al contenido</a>
+
+  <header class="cabecera">
+    <a class="marca" href="#inicio">📚 Mundo Literario</a>
+    <nav aria-label="Principal">
+      <ul>
+        <li><a href="#literatura">Literatura</a></li>
+        <li><a href="#generos">Géneros</a></li>
+        <li><a href="#autores">Autores y obras</a></li>
+        <li><a href="#bolivia">Bolivia</a></li>
+        <li><a href="#lectura">Lectura</a></li>
+        <li><a href="#resenas">Reseñas</a></li>
+        <li><a href="#hoy">Actualidad</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="contenido">
+
+    <section class="hero" id="inicio">
+      <div class="hero-texto">
+        <h1>Mundo Literario</h1>
+        <p class="lema">“Un libro, mil historias, infinitos mundos”</p>
+        <p>Un espacio para conocer, descubrir y valorar el maravilloso mundo de la literatura.</p>
+        <div class="acciones">
+          <a class="boton" href="#literatura">Empezar a leer</a>
+          <a class="boton boton-suave" href="#bolivia">Literatura boliviana</a>
+        </div>
+      </div>
+      <div class="lomos" aria-hidden="true">
+        <span style="--h:92%;--c:#14213d;--t:#f3f6f4">Cien años de soledad</span>
+        <span style="--h:78%;--c:#d52b1e;--t:#f3f6f4">Raza de bronce</span>
+        <span style="--h:100%;--c:#5b2a4e;--t:#f3f6f4">Rayuela</span>
+        <span style="--h:84%;--c:#007934;--t:#f3f6f4">Hamlet</span>
+        <span style="--h:70%;--c:#f9d900;--t:#14213d">Don Quijote</span>
+        <span style="--h:95%;--c:#14213d;--t:#e0a526">Romeo y Julieta</span>
+      </div>
+    </section>
+
+    <section class="bienvenida" aria-label="Bienvenida">
+      <p>Bienvenidos a Mundo Literario. En este blog encontrarás información sobre la literatura, sus características, géneros, autores, obras importantes y la literatura boliviana.</p>
+      <p>La literatura está presente en nuestra vida: en cuentos, poemas, novelas, leyendas y obras de teatro. A través de ella conocemos historias, expresamos sentimientos, imaginamos otros mundos y aprendemos sobre diferentes culturas y épocas.</p>
+      <p>Te invitamos a recorrer este espacio y descubrir el valor que tienen los libros y las palabras en nuestra sociedad.</p>
+    </section>
+
+    <section class="seccion" id="literatura">
+      <h2>📖 ¿Qué es la literatura?</h2>
+      <p>La literatura es una forma de expresión artística que utiliza principalmente el lenguaje para comunicar ideas, sentimientos, experiencias, pensamientos e historias. Por medio de ella, los escritores crean personajes, lugares y situaciones reales o imaginarias que permiten al lector conocer diferentes formas de comprender el mundo.</p>
+      <p>Ha acompañado a la humanidad desde tiempos antiguos. Antes de que existieran los libros, muchas historias, mitos, leyendas y conocimientos se transmitían oralmente de una generación a otra. Después, muchas de ellas fueron escritas y conservadas para las generaciones futuras.</p>
+      <p>Puede tratar temas como el amor, la amistad, la familia, la naturaleza, la libertad, la justicia, la sociedad, la identidad y la vida cotidiana.</p>
+
+      <h2 class="sub">🌱 Importancia de la literatura</h2>
+      <div class="rejilla dos">
+        <div class="ficha"><p>Permite desarrollar la imaginación, la creatividad, la comprensión y la expresión. Al leer, conocemos personajes, lugares y situaciones sin necesidad de vivirlas directamente.</p></div>
+        <div class="ficha"><p>Amplía el vocabulario y mejora la capacidad de comunicarse, tanto oralmente como por escrito.</p></div>
+        <div class="ficha"><p>Nos acerca a diferentes épocas y culturas: un libro puede mostrar las costumbres, los problemas y las formas de vida de una sociedad.</p></div>
+        <div class="ficha"><p>Transmite valores y enseñanzas. Una historia nos hace reflexionar sobre nuestras acciones y nuestras relaciones con los demás.</p></div>
+      </div>
+
+      <h2 class="sub">✨ Características de la literatura</h2>
+      <ul class="checks">
+        <li>Utiliza el lenguaje de una manera creativa.</li>
+        <li>Puede expresar sentimientos, ideas y pensamientos.</li>
+        <li>Puede contar historias reales o imaginarias.</li>
+        <li>Desarrolla la imaginación del lector.</li>
+        <li>Puede transmitir mensajes y enseñanzas.</li>
+        <li>Refleja aspectos de la sociedad y la cultura.</li>
+        <li>Puede pertenecer a diferentes géneros literarios.</li>
+        <li>Puede utilizar recursos como metáforas, comparaciones y otras formas de expresión.</li>
+        <li>Puede producir diferentes emociones en los lectores.</li>
+      </ul>
+    </section>
+
+    <section class="seccion oscura" id="generos">
+      <h2>📚 Géneros literarios</h2>
+      <p>Son categorías que permiten clasificar las obras literarias según sus características y la manera en que están escritas.</p>
+      <div class="rejilla cuatro">
+        <article class="ficha">
+          <h3>📕 Narrativo</h3>
+          <p>Presenta una historia contada por un narrador, con personajes que participan en acontecimientos dentro de un lugar y tiempo determinados.</p>
+          <ul class="lista"><li>Cuento</li><li>Novela</li><li>Fábula</li><li>Leyenda</li><li>Mito</li></ul>
+        </article>
+        <article class="ficha">
+          <h3>🌹 Lírico</h3>
+          <p>Expresa sentimientos, emociones, pensamientos y estados de ánimo. Su forma más conocida es la poesía, que puede hablar del amor, la naturaleza, la tristeza, la alegría o la amistad.</p>
+        </article>
+        <article class="ficha">
+          <h3>🎭 Dramático</h3>
+          <p>Está destinado a ser representado ante un público. Los personajes participan mediante diálogos y acciones.</p>
+          <ul class="lista"><li>Tragedia</li><li>Comedia</li><li>Drama</li></ul>
+        </article>
+        <article class="ficha">
+          <h3>📘 Didáctico</h3>
+          <p>Busca transmitir conocimientos, ideas, enseñanzas o reflexiones, como en el ensayo y otros escritos que explican o reflexionan sobre diversos temas.</p>
+        </article>
+      </div>
+
+      <h2 class="sub">📝 Elementos de una obra literaria</h2>
+      <div class="rejilla tres">
+        <article class="ficha"><h3>Personajes</h3><p>Quienes participan en la historia: personas, animales, seres imaginarios u otros.</p></article>
+        <article class="ficha"><h3>Narrador</h3><p>La voz que cuenta los acontecimientos. Puede participar en la historia o contarla desde afuera.</p></article>
+        <article class="ficha"><h3>Tiempo</h3><p>Indica cuándo ocurren los hechos: una época histórica, un año, un día o un periodo determinado.</p></article>
+        <article class="ficha"><h3>Espacio</h3><p>El lugar donde se desarrolla la historia.</p></article>
+        <article class="ficha"><h3>Trama</h3><p>El conjunto de acontecimientos que forman la historia.</p></article>
+        <article class="ficha"><h3>Tema</h3><p>La idea principal de la obra: el amor, la amistad, la libertad, la familia o la justicia.</p></article>
+      </div>
+    </section>
+
+    <section class="seccion" id="autores">
+      <h2>✍️ Autores destacados</h2>
+      <p>A lo largo de la historia han existido numerosos escritores que dejaron importantes obras.</p>
+      <div class="rejilla tres">
+        <article class="ficha"><h3>Miguel de Cervantes</h3><p class="dato">Escritor español</p><p>Figura fundamental de la literatura en lengua española. Su obra más conocida es Don Quijote de la Mancha.</p></article>
+        <article class="ficha"><h3>William Shakespeare</h3><p class="dato">Escritor y dramaturgo inglés</p><p>Conocido por Romeo y Julieta, Hamlet y Macbeth.</p></article>
+        <article class="ficha"><h3>Gabriel García Márquez</h3><p class="dato">Escritor colombiano</p><p>Uno de los autores latinoamericanos más reconocidos. Entre sus obras se encuentra Cien años de soledad.</p></article>
+        <article class="ficha"><h3>Julio Cortázar</h3><p class="dato">Escritor argentino</p><p>Relacionado con la literatura latinoamericana. Conocido por Rayuela y diversos libros de cuentos.</p></article>
+        <article class="ficha"><h3>Adela Zamudio</h3><p class="dato">Escritora boliviana</p><p>Reconocida por su poesía y narrativa y por su aporte a la literatura boliviana.</p></article>
+        <article class="ficha"><h3>Óscar Alfaro</h3><p class="dato">Escritor y poeta boliviano</p><p>Conocido especialmente por sus obras dirigidas a niños y jóvenes.</p></article>
+      </div>
+
+      <h2 class="sub">📕 Obras literarias importantes</h2>
+      <p>Algunas obras de la literatura universal y latinoamericana:</p>
+      <div class="rejilla dos">
+        <article class="obra"><h3>Don Quijote de la Mancha</h3><p class="dato">Miguel de Cervantes</p><p>Una de las obras más conocidas de la literatura española. Cuenta las aventuras de Don Quijote y su compañero Sancho Panza.</p></article>
+        <article class="obra"><h3>Romeo y Julieta</h3><p class="dato">William Shakespeare</p><p>Obra dramática sobre dos jóvenes de familias enfrentadas.</p></article>
+        <article class="obra"><h3>Cien años de soledad</h3><p class="dato">Gabriel García Márquez</p><p>La historia de varias generaciones de la familia Buendía en el pueblo ficticio de Macondo.</p></article>
+        <article class="obra"><h3>Rayuela</h3><p class="dato">Julio Cortázar</p><p>Novela con una estructura particular y diferentes posibilidades de lectura.</p></article>
+        <article class="obra"><h3>Raza de bronce</h3><p class="dato">Alcides Arguedas</p><p>Importante obra de la literatura boliviana que presenta aspectos de la sociedad indígena y rural de Bolivia.</p></article>
+      </div>
+    </section>
+
+    <section class="seccion bolivia" id="bolivia">
+      <h2>🇧🇴 Literatura boliviana</h2>
+      <p>Comprende las obras creadas por escritores de Bolivia y refleja aspectos de la historia, la cultura, la sociedad y la diversidad del país. Escritores de diferentes épocas y regiones la han usado para expresar sus ideas y representar las experiencias de la sociedad boliviana.</p>
+      <p>Algunos autores destacados:</p>
+      <ul class="chips">
+        <li>Adela Zamudio</li><li>Alcides Arguedas</li><li>Franz Tamayo</li><li>Jaime Saenz</li>
+        <li>Óscar Alfaro</li><li>Edmundo Paz Soldán</li><li>Yolanda Bedregal</li>
+      </ul>
+      <p>Incluye poesía, cuentos, novelas, ensayos y otros géneros.</p>
+
+      <h2 class="sub">🏔️ La literatura y la cultura boliviana</h2>
+      <p>La literatura conserva y transmite elementos de la cultura boliviana. Mediante cuentos, leyendas, poemas y novelas conocemos tradiciones, costumbres, paisajes, personajes y acontecimientos relacionados con Bolivia.</p>
+      <p>Las leyendas y los relatos tradicionales forman parte de la memoria cultural de las comunidades y pasan de generación en generación. Por medio de ellos valoramos la diversidad cultural de Bolivia y conocemos diferentes formas de pensar y vivir.</p>
+    </section>
+
+    <section class="seccion" id="lectura">
+      <h2>📚 La importancia de la lectura</h2>
+      <p>Leer es fundamental para el aprendizaje: permite adquirir conocimientos, mejorar la comprensión de textos, ampliar el vocabulario, desarrollar la imaginación y expresar mejor las ideas.</p>
+      <p>Leer literatura no es solo estudiar; también es entretenimiento y una oportunidad de conocer historias y personajes diferentes. Un buen hábito de lectura contribuye al desarrollo académico y personal de los estudiantes.</p>
+
+      <h2 class="sub">💭 ¿Por qué debemos leer literatura?</h2>
+      <p>Porque los libros nos enseñan diferentes formas de ver el mundo. A través de una historia conocemos otras culturas, épocas y situaciones, nos identificamos con ciertos personajes y reflexionamos sobre los problemas de una obra.</p>
+      <p>La lectura desarrolla la creatividad y mejora nuestra manera de escribir y expresarnos. Además, cada lector interpreta una obra a su manera, por lo que un mismo libro puede generar distintas emociones y reflexiones.</p>
+
+      <h2 class="sub">🌟 Literatura y juventud</h2>
+      <p>Para los jóvenes, la literatura ofrece historias relacionadas con diferentes experiencias y emociones. En los libros encuentran personajes con los que se identifican, historias que despiertan su imaginación y temas que los ayudan a reflexionar. La lectura se vuelve agradable cuando cada persona encuentra géneros y temas de su interés.</p>
+
+      <div class="dos-col sub">
+        <div>
+          <h2>📖 ¿Cómo elegir un libro?</h2>
+          <ul class="checks">
+            <li>El tema que nos interesa.</li><li>El género literario.</li><li>El autor.</li>
+            <li>La extensión de la obra.</li><li>La edad recomendada.</li>
+            <li>Las opiniones o reseñas sobre el libro.</li><li>La descripción o sinopsis.</li>
+          </ul>
+          <p style="margin-top:1rem">Lo más importante es encontrar lecturas que despierten curiosidad y permitan disfrutar del proceso de leer.</p>
+        </div>
+        <div>
+          <h2>📝 Consejos para disfrutar de la lectura</h2>
+          <ol class="pasos" style="grid-template-columns:1fr">
+            <li>Elegir un lugar tranquilo.</li>
+            <li>Escoger un libro relacionado con nuestros intereses.</li>
+            <li>Leer a un ritmo cómodo.</li>
+            <li>Evitar distracciones cuando sea posible.</li>
+            <li>Anotar palabras nuevas.</li>
+            <li>Reflexionar sobre lo leído.</li>
+            <li>Compartir opiniones sobre los libros.</li>
+            <li>Probar diferentes géneros literarios.</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="seccion oscura" id="resenas">
+      <h2>🔎 ¿Qué es una reseña literaria?</h2>
+      <p>Es un texto en el que se presenta y comenta una obra literaria. Permite que otras personas la conozcan antes de decidir si quieren leerla.</p>
+      <p>Una reseña puede incluir:</p>
+      <div class="rejilla cuatro">
+        <div class="ficha"><p>Nombre de la obra</p></div>
+        <div class="ficha"><p>Nombre del autor</p></div>
+        <div class="ficha"><p>Género literario</p></div>
+        <div class="ficha"><p>Tema principal</p></div>
+        <div class="ficha"><p>Breve resumen</p></div>
+        <div class="ficha"><p>Características de la obra</p></div>
+        <div class="ficha"><p>Comentario del lector</p></div>
+      </div>
+    </section>
+
+    <section class="seccion" id="hoy">
+      <h2>💡 Curiosidades literarias</h2>
+      <ul class="checks">
+        <li>📖 La literatura existe desde hace miles de años y comenzó a transmitirse principalmente de manera oral.</li>
+        <li>✍️ Muchas historias antiguas se transmitieron durante generaciones antes de ser escritas.</li>
+        <li>📚 Existen obras literarias de prácticamente todas las culturas del mundo.</li>
+        <li>🎭 El teatro combina literatura y representación escénica.</li>
+        <li>🌎 La literatura permite conocer culturas diferentes sin necesidad de viajar.</li>
+        <li>🇧🇴 Bolivia cuenta con una importante tradición literaria formada por escritores de diferentes épocas.</li>
+      </ul>
+
+      <h2 class="sub">📱 La literatura en la actualidad</h2>
+      <p>La literatura evoluciona junto con la tecnología. Además de los libros impresos, hoy existen libros digitales o ebooks que se leen en celulares, tablets y computadoras, así como audiolibros, revistas digitales, blogs literarios y plataformas donde los escritores comparten sus obras.</p>
+      <p>Internet facilitó el acceso a una gran cantidad de textos y la comunicación entre lectores y escritores. Aunque cambien los formatos, la literatura sigue cumpliendo su función: contar historias, expresar ideas y transmitir conocimientos y sentimientos.</p>
+
+      <div class="rejilla dos sub">
+        <article class="obra">
+          <h3>❤️ Una forma de expresión</h3>
+          <p>Permite expresar lo que muchas veces es difícil comunicar en lo cotidiano: un poema transmite sentimientos, una novela presenta conflictos humanos y un cuento enseña una idea mediante una historia.</p>
+          <p>Escribir también es una manera de expresar nuestra creatividad, experiencias e imaginación. La literatura no pertenece solo a los grandes escritores: cualquier persona puede comenzar a escribir y desarrollar su propia voz.</p>
+        </article>
+        <article class="obra">
+          <h3>🌎 Un puente entre culturas</h3>
+          <p>Los libros nos acercan a personas y sociedades diferentes. Una obra escrita en otro país nos muestra sus costumbres, tradiciones, problemas y formas de pensar.</p>
+          <p>Así, la literatura une culturas y épocas, y leer obras de distintos lugares nos ayuda a comprender que existen muchas maneras de interpretar y representar el mundo.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="seccion oscura final" id="conclusion">
+      <h2>⭐ Conclusión</h2>
+      <p>La literatura es una de las formas más importantes de expresión humana. A través de cuentos, novelas, poemas, leyendas y obras teatrales, las personas transmiten historias, sentimientos, pensamientos, conocimientos y experiencias.</p>
+      <p>Su importancia va más allá del entretenimiento: desarrolla la imaginación, amplía el vocabulario, mejora la comprensión y nos acerca a otras culturas y épocas. La literatura boliviana ocupa un lugar importante porque nos permite conocer y valorar nuestra historia, cultura y diversidad.</p>
+      <p>Hoy los libros existen en formato físico y digital, pero su propósito es el mismo: usar las palabras para crear, comunicar, enseñar y emocionar.</p>
+      <p class="cita">📚 “Leer es abrir la puerta a nuevos mundos.”</p>
+      <p>Gracias por visitar Mundo Literario. ❤️📖</p>
+    </section>
+
+  </main>
+
+  <footer class="pie">
+    <p>© 2026 Mundo Literario. Un libro, mil historias, infinitos mundos.</p>
+    <a href="#inicio">Volver arriba</a>
+  </footer>
+</body>
+</html>
